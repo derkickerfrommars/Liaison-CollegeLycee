@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatismes Flash — BAC de Première · Passerelle 3e→2nde</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../index.html" class="site-logo"><span class="logo-icon">📐</span>Passerelle 3e→2nde</a>
+    <nav><ul class="nav-links">
+      <li><a href="../diagnostic.html">Diagnostic</a></li>
+      <li><a href="../parcours/A.html">Remise en forme</a></li>
+      <li><a href="../parcours/B.html">Les essentiels</a></li>
+      <li><a href="../parcours/C.html">Cap Seconde</a></li>
+      <li><a href="index.html" class="active">Automatismes BAC</a></li>
+    </ul></nav>
+    <div class="header-right">
+      <div class="streak-pill" id="streak-pill" style="display:none">📅 0 jour</div>
+      <div class="user-chip" id="user-chip">Se connecter</div>
+    </div>
+  </div>
+</header>
+
+<!-- En-tête section BAC -->
+<section class="bac-section" style="padding:3rem 0 2rem;">
+  <div class="container" style="max-width:800px;">
+    <div class="bac-eyebrow">🎯 Épreuve anticipée de Première</div>
+    <h1 style="font-size:2rem;margin-bottom:.75rem;">Automatismes Flash</h1>
+    <p style="opacity:.85;margin-bottom:1.75rem;max-width:580px;">
+      À l'épreuve anticipée de Première, <strong>6 points sur 20</strong> sont attribués à une série de questions flash (QCM), sans calculatrice. C'est une compétence qui se construit par la <strong>répétition régulière</strong> — commence maintenant !
+    </p>
+    <div class="bac-stats" style="margin-bottom:2rem;">
+      <div class="bac-stat">
+        <span class="bac-stat-val">6 pts</span>
+        <span class="bac-stat-lbl">sur 20</span>
+      </div>
+      <div class="bac-stat">
+        <span class="bac-stat-val">Sans calculatrice</span>
+        <span class="bac-stat-lbl">toute l'épreuve</span>
+      </div>
+      <div class="bac-stat">
+        <span class="bac-stat-val">20 questions</span>
+        <span class="bac-stat-lbl">dans cette session</span>
+      </div>
+    </div>
+
+    <!-- Barre de progression -->
+    <div style="background:rgba(255,255,255,.15);border-radius:50px;height:10px;margin-bottom:.5rem;overflow:hidden;max-width:400px;">
+      <div id="prog-bar-auto" style="height:100%;border-radius:50px;background:#FCD34D;transition:width .5s ease;width:0%"></div>
+    </div>
+    <div style="font-size:.82rem;opacity:.7;">Questions déjà réussies : <span id="prog-auto-done">0</span> / 20</div>
+  </div>
+</section>
+
+<!-- Conseils -->
+<section style="background:#F8F9FA;padding:1.5rem 0;border-bottom:1px solid var(--border);">
+  <div class="container" style="max-width:800px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+      <div style="display:flex;align-items:center;gap:.75rem;background:white;border-radius:12px;padding:.85rem 1rem;border:1.5px solid var(--border);">
+        <span style="font-size:1.5rem;">⏱️</span>
+        <div style="font-size:.85rem;"><strong>Rapidité</strong><br><span style="color:var(--text-muted);">Entraîne-toi à répondre vite</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;background:white;border-radius:12px;padding:.85rem 1rem;border:1.5px solid var(--border);">
+        <span style="font-size:1.5rem;">🧠</span>
+        <div style="font-size:.85rem;"><strong>Calcul mental</strong><br><span style="color:var(--text-muted);">Pas de calculatrice !</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;background:white;border-radius:12px;padding:.85rem 1rem;border:1.5px solid var(--border);">
+        <span style="font-size:1.5rem;">🔄</span>
+        <div style="font-size:.85rem;"><strong>Répétition</strong><br><span style="color:var(--text-muted);">Reviens chaque jour !</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;background:white;border-radius:12px;padding:.85rem 1rem;border:1.5px solid var(--border);">
+        <span style="font-size:1.5rem;">📖</span>
+        <div style="font-size:.85rem;"><strong>Explication</strong><br><span style="color:var(--text-muted);">Lis toujours le corrigé</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Zone QCM -->
+<section class="section">
+  <div class="container" style="max-width:700px;">
+
+    <div style="text-align:center;margin-bottom:2rem;" id="qcm-start">
+      <div style="font-size:3rem;margin-bottom:1rem;">⚡</div>
+      <h2>Prêt·e pour le défi ?</h2>
+      <p style="color:var(--text-muted);margin:.75rem 0 1.5rem;">20 questions QCM · Sans calculatrice · Lis bien les explications après chaque réponse</p>
+      <button class="btn btn-primary btn-lg" onclick="lancerQCM()">⚡ Lancer les automatismes</button>
+    </div>
+
+    <div id="qcm-zone" style="display:none;">
+      <div id="qcm-container" data-qcm-container></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Lien vers les parcours -->
+<section style="background:var(--surface-2);padding:2rem 0;border-top:1px solid var(--border);">
+  <div class="container" style="max-width:800px;text-align:center;">
+    <h3 style="margin-bottom:1rem;">Pour aller plus loin…</h3>
+    <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:.9rem;">Les automatismes sont efficaces si tu maîtrises les bases. N'hésite pas à revenir aux parcours pour consolider.</p>
+    <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;">
+      <a href="../parcours/A.html" class="btn btn-ghost">🏃 Parcours A</a>
+      <a href="../parcours/B.html" class="btn btn-ghost">⭐ Parcours B</a>
+      <a href="../parcours/C.html" class="btn btn-ghost">🎯 Parcours C</a>
+      <a href="../tableau-de-bord.html" class="btn btn-primary">📊 Mon tableau de bord</a>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-text" id="daily-quote">"Ce n'est pas parce que les choses sont difficiles que nous n'osons pas."</div>
+    <div class="quote-author" id="daily-quote-author">— Sénèque</div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-logo">📐 Passerelle 3e→2nde</div>
+    <p style="margin-top:.5rem;font-size:.82rem;">Format basé sur l'épreuve anticipée de mathématiques de Première (session 2027)</p>
+  </div>
+</footer>
+
+<script src="../js/data.js"></script>
+<script src="../js/app.js"></script>
+<script>
+  function lancerQCM() {
+    document.getElementById('qcm-start').style.display = 'none';
+    document.getElementById('qcm-zone').style.display = 'block';
+    const container = document.getElementById('qcm-container');
+    startQCMSession(container);
+    window.scrollTo({ top: 300, behavior: 'smooth' });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const pr = getParcoursProgress('AUTO');
+    const bar = document.getElementById('prog-bar-auto');
+    const done = document.getElementById('prog-auto-done');
+    if (bar) bar.style.width = pr.pct + '%';
+    if (done) done.textContent = pr.done;
+  });
+</script>
+</body>
+</html>

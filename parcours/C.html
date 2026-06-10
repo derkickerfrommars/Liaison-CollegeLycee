@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parcours C — Cap Seconde · Passerelle 3e→2nde</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../index.html" class="site-logo"><span class="logo-icon">📐</span>Passerelle 3e→2nde</a>
+    <nav><ul class="nav-links">
+      <li><a href="../diagnostic.html">Diagnostic</a></li>
+      <li><a href="A.html">Remise en forme</a></li>
+      <li><a href="B.html">Les essentiels</a></li>
+      <li><a href="C.html" class="active">Cap Seconde</a></li>
+      <li><a href="../automatismes/index.html">Automatismes BAC</a></li>
+    </ul></nav>
+    <div class="header-right">
+      <div class="streak-pill" id="streak-pill" style="display:none">📅 0 jour</div>
+      <div class="user-chip" id="user-chip">Se connecter</div>
+    </div>
+  </div>
+</header>
+
+<!-- En-tête parcours -->
+<section style="background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border-bottom:3px solid var(--blue);padding:2.5rem 0;">
+  <div class="container" style="max-width:800px;">
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+      <span style="font-size:2.5rem;">🎯</span>
+      <div>
+        <div style="font-size:.78rem;font-weight:900;color:var(--blue);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem;">Parcours C</div>
+        <h1 style="font-size:1.8rem;">Cap Seconde</h1>
+      </div>
+      <div style="margin-left:auto;">
+        <div class="prog-bar-wrap" style="width:200px;">
+          <div class="prog-bar pc" id="prog-bar-C-local" style="width:0%"></div>
+        </div>
+        <div style="font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:.3rem;text-align:right;">
+          <span id="prog-done-C">0</span> / 10 exercices
+        </div>
+      </div>
+    </div>
+    <p style="color:var(--text-muted);max-width:600px;">
+      Ce parcours t'introduit aux notions phares du programme de Seconde (BO avril 2026). Tu peux commencer à les découvrir maintenant — c'est une vraie longueur d'avance !
+    </p>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;">
+      <span class="topic-chip" style="background:#DBEAFE;color:#1D4ED8;">Ensembles de nombres</span>
+      <span class="topic-chip" style="background:#DBEAFE;color:#1D4ED8;">Intervalles</span>
+      <span class="topic-chip" style="background:#DBEAFE;color:#1D4ED8;">Valeur absolue</span>
+      <span class="topic-chip" style="background:#DBEAFE;color:#1D4ED8;">Vecteurs</span>
+      <span class="topic-chip" style="background:#DBEAFE;color:#1D4ED8;">Fonctions</span>
+      <span class="topic-chip" style="background:#DBEAFE;color:#1D4ED8;">Statistiques 2nde</span>
+      <span class="topic-chip" style="background:#DBEAFE;color:#1D4ED8;">Probabilités</span>
+      <span class="topic-chip" style="background:#DBEAFE;color:#1D4ED8;">Géométrie analytique</span>
+    </div>
+  </div>
+</section>
+
+<!-- Exercices -->
+<section class="section">
+  <div class="container" style="max-width:800px;">
+
+    <div style="background:var(--blue-light);border:1.5px solid #BFDBFE;border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:2rem;display:flex;gap:.75rem;align-items:flex-start;">
+      <span style="font-size:1.5rem;">🚀</span>
+      <div>
+        <strong>Tu découvres la Seconde :</strong> Ces exercices portent sur des notions que tu rencontreras dès les premières semaines au lycée. Ne te décourage pas si c'est nouveau — c'est normal ! Les indices et solutions sont là pour t'accompagner.
+      </div>
+    </div>
+
+    <div id="exercices-C"></div>
+
+    <!-- Navigation vers automatismes -->
+    <div style="text-align:center;margin-top:3rem;padding:2rem;background:linear-gradient(135deg,#1E1B4B,#312E81);border-radius:var(--radius-lg);color:white;">
+      <div style="font-size:2rem;margin-bottom:.75rem;">⚡</div>
+      <h3 style="margin-bottom:.5rem;color:#FCD34D;">N'oublie pas les automatismes !</h3>
+      <p style="opacity:.8;font-size:.9rem;margin-bottom:1.25rem;">6 points au BAC de Première, sans calculatrice. C'est maintenant qu'on les prépare.</p>
+      <a href="../automatismes/index.html" class="btn-bac">⚡ S'entraîner aux automatismes BAC</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-text" id="daily-quote"></div>
+    <div class="quote-author" id="daily-quote-author"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-logo">📐 Passerelle 3e→2nde</div>
+    <p style="margin-top:.5rem;font-size:.82rem;">Basé sur le programme de Seconde GT (BO n°14, avril 2026)</p>
+  </div>
+</footer>
+
+<script src="../js/data.js"></script>
+<script src="../js/app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('exercices-C');
+    EXERCICES_C.forEach(ex => {
+      const wrapper = document.createElement('div');
+      wrapper.id = `ex-wrap-${ex.id}`;
+      container.appendChild(wrapper);
+      renderExercice(ex, wrapper, 'blue');
+    });
+
+    const pr = getParcoursProgress('C');
+    const bar = document.getElementById('prog-bar-C-local');
+    const doneTxt = document.getElementById('prog-done-C');
+    if (bar) bar.style.width = pr.pct + '%';
+    if (doneTxt) doneTxt.textContent = pr.done;
+  });
+</script>
+</body>
+</html>

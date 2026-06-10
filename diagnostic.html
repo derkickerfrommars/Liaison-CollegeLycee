@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnostic — Passerelle 3e→2nde</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../index.html" class="site-logo"><span class="logo-icon">📐</span>Passerelle 3e→2nde</a>
+    <nav><ul class="nav-links">
+      <li><a href="diagnostic.html" class="active">Diagnostic</a></li>
+      <li><a href="parcours/A.html">Remise en forme</a></li>
+      <li><a href="parcours/B.html">Les essentiels</a></li>
+      <li><a href="parcours/C.html">Cap Seconde</a></li>
+      <li><a href="automatismes/index.html">Automatismes BAC</a></li>
+    </ul></nav>
+    <div class="header-right">
+      <div class="streak-pill" id="streak-pill" style="display:none">📅 0 jour</div>
+      <div class="user-chip" id="user-chip">Se connecter</div>
+    </div>
+  </div>
+</header>
+
+<!-- Intro -->
+<section style="background:linear-gradient(135deg,#F5F3FF,#EEF2FF);padding:3rem 0;">
+  <div class="container" style="max-width:700px;text-align:center;">
+    <div style="font-size:3rem;margin-bottom:1rem;">🧭</div>
+    <h1>Le diagnostic</h1>
+    <p style="font-size:1.1rem;color:var(--text-muted);margin:.75rem 0 1.5rem;">
+      15 questions pour savoir <strong>par où commencer</strong>. Il n'y a pas de bonne ou de mauvaise réponse — sois honnête avec toi-même, c'est comme ça que tu progresseras vraiment !
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;">
+      <div style="background:white;border-radius:12px;padding:.75rem 1.25rem;border:1.5px solid var(--border);font-weight:700;font-size:.9rem;">
+        📋 15 questions
+      </div>
+      <div style="background:white;border-radius:12px;padding:.75rem 1.25rem;border:1.5px solid var(--border);font-weight:700;font-size:.9rem;">
+        ⏱️ ~15 minutes
+      </div>
+      <div style="background:white;border-radius:12px;padding:.75rem 1.25rem;border:1.5px solid var(--border);font-weight:700;font-size:.9rem;">
+        🎯 Recommandation personnalisée
+      </div>
+    </div>
+    <div id="start-zone">
+      <button class="btn btn-primary btn-lg" onclick="startDiag()">Commencer le diagnostic →</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="max-width:700px;margin:0 auto;">
+  <div id="diag-container"></div>
+  <div id="diag-result" style="display:none;"></div>
+</section>
+
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-text" id="daily-quote">"Honnêteté avec soi-même, c'est la première clé du progrès."</div>
+    <div class="quote-author" id="daily-quote-author">— Anonyme</div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-logo">📐 Passerelle 3e→2nde</div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  let diagIndex = 0;
+  let diagScores = { A: 0, B: 0, C: 0 };
+  let diagAnswers = [];
+
+  function startDiag() {
+    document.getElementById('start-zone').style.display = 'none';
+    diagIndex = 0;
+    diagScores = { A: 0, B: 0, C: 0 };
+    diagAnswers = [];
+    renderDiagQuestion();
+  }
+
+  function renderDiagQuestion() {
+    const container = document.getElementById('diag-container');
+    if (diagIndex >= DIAGNOSTIC.length) {
+      showDiagResult();
+      return;
+    }
+
+    const q = DIAGNOSTIC[diagIndex];
+    const pct = Math.round((diagIndex / DIAGNOSTIC.length) * 100);
+
+    const optsHTML = q.options.map((opt, i) =>
+      `<button class="qcm-opt" onclick="answerDiag(${i})">${opt}</button>`
+    ).join('');
+
+    container.innerHTML = `
+      <div class="diag-progress">
+        <div class="diag-prog-bar"><div class="diag-prog-fill" style="width:${pct}%"></div></div>
+        <div class="diag-prog-label"><span>Question ${diagIndex + 1} / ${DIAGNOSTIC.length}</span><span></span></div>
+      </div>
+      <div class="ex-card fade-in">
+        <div class="ex-header">
+          <div class="ex-meta"><span class="ex-id">${q.id}</span></div>
+          <div class="ex-right"></div>
+        </div>
+        <div class="ex-body">
+          <div class="enonce katex-content">${q.question}</div>
+          <div class="qcm-wrap">
+            <div class="qcm-options">${optsHTML}</div>
+          </div>
+          <div id="diag-feedback" style="display:none;margin-top:1rem;padding:1rem;border-radius:12px;"></div>
+        </div>
+      </div>`;
+
+    if (typeof renderMathInElement !== 'undefined') {
+      setTimeout(() => renderMathInElement(container, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+        ],
+        throwOnError: false,
+      }), 60);
+    }
+  }
+
+  function answerDiag(idx) {
+    const q = DIAGNOSTIC[diagIndex];
+    const opts = document.querySelectorAll('#diag-container .qcm-opt');
+    opts.forEach(o => o.disabled = true);
+
+    const correct = idx === q.reponse;
+    opts[q.reponse].classList.add('correct');
+    if (!correct) opts[idx].classList.add('wrong');
+
+    if (correct) {
+      diagScores.A += q.poids.A;
+      diagScores.B += q.poids.B;
+      diagScores.C += q.poids.C;
+    }
+
+    diagAnswers.push({ qId: q.id, correct });
+
+    const feedback = document.getElementById('diag-feedback');
+    if (feedback) {
+      feedback.style.display = 'block';
+      feedback.style.background = correct ? 'var(--green-light)' : 'var(--red-light)';
+      feedback.style.border = `1.5px solid ${correct ? '#86EFAC' : '#FCA5A5'}`;
+      feedback.style.color = correct ? 'var(--green)' : 'var(--red)';
+      feedback.style.fontWeight = '700';
+      feedback.textContent = correct ? '✅ Bonne réponse !' : '❌ Pas tout à fait — mais c\'est en travaillant qu\'on apprend !';
+    }
+
+    setTimeout(() => {
+      diagIndex++;
+      renderDiagQuestion();
+    }, 1400);
+  }
+
+  function showDiagResult() {
+    document.getElementById('diag-container').innerHTML = '';
+    const result = document.getElementById('diag-result');
+    result.style.display = 'block';
+
+    const total = DIAGNOSTIC.length;
+    const correct = diagAnswers.filter(a => a.correct).length;
+    const pct = Math.round((correct / total) * 100);
+
+    // Déterminer la recommandation
+    let reco, recoHref, recoIcon, recoMsg;
+    const sA = diagScores.A, sB = diagScores.B, sC = diagScores.C;
+
+    if (sC > sB && sC > sA) {
+      reco = 'Parcours C — Cap Seconde';
+      recoHref = 'parcours/C.html';
+      recoIcon = '🎯';
+      recoMsg = 'Tu as de très bonnes bases ! Tu peux directement préparer le programme de Seconde tout en gardant un œil sur le Parcours B pour consolider.';
+    } else if (sB >= sA) {
+      reco = 'Parcours B — Les essentiels';
+      recoHref = 'parcours/B.html';
+      recoIcon = '⭐';
+      recoMsg = 'Tu as de bonnes bases ! On te recommande de commencer par le Parcours B pour consolider, avant de passer au C. Le A peut aussi être un bon échauffement si tu veux revoir certains points.';
+    } else {
+      reco = 'Parcours A — Remise en forme';
+      recoHref = 'parcours/A.html';
+      recoIcon = '💪';
+      recoMsg = 'Pas de panique ! Le Parcours A est fait pour revoir les fondamentaux dans un esprit bienveillant. C\'est la meilleure façon de construire des bases solides.';
+    }
+
+    let emoji = pct >= 80 ? '🏆' : pct >= 60 ? '🌟' : pct >= 40 ? '📚' : '💪';
+
+    result.innerHTML = `
+      <div class="result-card fade-in">
+        <div class="result-emoji">${emoji}</div>
+        <h2>Diagnostic terminé !</h2>
+        <p style="font-size:1.1rem;">${correct} bonne${correct > 1 ? 's' : ''} réponse${correct > 1 ? 's' : ''} sur ${total} — ${pct} %</p>
+        <p style="color:var(--text-muted);margin-bottom:1.5rem;">Ce score n'est pas une note. C'est juste un point de départ pour personnaliser ton parcours.</p>
+
+        <div class="result-reco">
+          <div class="result-reco-title">${recoIcon} Notre recommandation : ${reco}</div>
+          <p style="font-size:.9rem;color:var(--text-muted);margin-top:.5rem;">${recoMsg}</p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem;">
+          <a href="${recoHref}" class="btn btn-primary btn-lg btn-full">
+            ${recoIcon} Commencer le ${reco} →
+          </a>
+          <a href="automatismes/index.html" class="btn btn-warning btn-lg btn-full">
+            ⚡ Tester les automatismes BAC
+          </a>
+          <a href="tableau-de-bord.html" class="btn btn-ghost btn-lg btn-full">
+            📊 Voir mon tableau de bord
+          </a>
+        </div>
+
+        <p style="text-align:center;margin-top:1.5rem;color:var(--text-muted);font-size:.88rem;">
+          Tu peux refaire ce diagnostic quand tu veux pour mesurer tes progrès 💪
+        </p>
+      </div>`;
+
+    if (typeof renderMathInElement !== 'undefined') {
+      setTimeout(() => renderMathInElement(result, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+        ],
+        throwOnError: false,
+      }), 60);
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (correct > 0) launchConfetti(30);
+  }
+</script>
+</body>
+</html>

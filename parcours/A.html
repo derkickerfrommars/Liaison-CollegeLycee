@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parcours A — Remise en forme · Passerelle 3e→2nde</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../index.html" class="site-logo"><span class="logo-icon">📐</span>Passerelle 3e→2nde</a>
+    <nav><ul class="nav-links">
+      <li><a href="../diagnostic.html">Diagnostic</a></li>
+      <li><a href="A.html" class="active">Remise en forme</a></li>
+      <li><a href="B.html">Les essentiels</a></li>
+      <li><a href="C.html">Cap Seconde</a></li>
+      <li><a href="../automatismes/index.html">Automatismes BAC</a></li>
+    </ul></nav>
+    <div class="header-right">
+      <div class="streak-pill" id="streak-pill" style="display:none">📅 0 jour</div>
+      <div class="user-chip" id="user-chip">Se connecter</div>
+    </div>
+  </div>
+</header>
+
+<!-- En-tête parcours -->
+<section style="background:linear-gradient(135deg,#FFF7ED,#FFEDD5);border-bottom:3px solid var(--orange);padding:2.5rem 0;">
+  <div class="container" style="max-width:800px;">
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+      <span style="font-size:2.5rem;">🏃</span>
+      <div>
+        <div style="font-size:.78rem;font-weight:900;color:var(--orange);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem;">Parcours A</div>
+        <h1 style="font-size:1.8rem;">Remise en forme</h1>
+      </div>
+      <div style="margin-left:auto;">
+        <div class="prog-bar-wrap" style="width:200px;">
+          <div class="prog-bar pa" id="prog-bar-A-local" style="width:0%"></div>
+        </div>
+        <div style="font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:.3rem;text-align:right;">
+          <span id="prog-done-A">0</span> / 10 exercices
+        </div>
+      </div>
+    </div>
+    <p style="color:var(--text-muted);max-width:600px;">
+      Ce parcours te permet de retrouver des repères solides en mathématiques — les notions sur lesquelles tout le reste s'appuie.
+      Prends ton temps, prends ta feuille, et fais chaque exercice avec soin.
+    </p>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;">
+      <span class="topic-chip" style="background:#FED7AA;color:#C2410C;">Fractions</span>
+      <span class="topic-chip" style="background:#FED7AA;color:#C2410C;">Proportionnalité</span>
+      <span class="topic-chip" style="background:#FED7AA;color:#C2410C;">Pourcentages</span>
+      <span class="topic-chip" style="background:#FED7AA;color:#C2410C;">Équations simples</span>
+      <span class="topic-chip" style="background:#FED7AA;color:#C2410C;">Géométrie</span>
+      <span class="topic-chip" style="background:#FED7AA;color:#C2410C;">Puissances</span>
+    </div>
+  </div>
+</section>
+
+<!-- Exercices -->
+<section class="section">
+  <div class="container" style="max-width:800px;">
+
+    <div style="background:var(--orange-light);border:1.5px solid #FED7AA;border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:2rem;display:flex;gap:.75rem;align-items:flex-start;">
+      <span style="font-size:1.5rem;">💡</span>
+      <div>
+        <strong>Comment bien travailler :</strong> Lis l'énoncé, prends ta feuille et cherche par toi-même avant de regarder l'indice ou la solution. L'erreur n'est pas un échec — c'est une étape.
+      </div>
+    </div>
+
+    <!-- Les exercices seront générés ici -->
+    <div id="exercices-A"></div>
+
+    <!-- Navigation vers B -->
+    <div style="text-align:center;margin-top:3rem;padding:2rem;background:var(--purple-light);border-radius:var(--radius-lg);border:2px dashed var(--purple);">
+      <div style="font-size:2rem;margin-bottom:.75rem;">⭐</div>
+      <h3 style="color:var(--purple);margin-bottom:.5rem;">Tu te sens prêt·e pour la suite ?</h3>
+      <p style="color:var(--text-muted);font-size:.9rem;margin-bottom:1.25rem;">Le Parcours B reprend le programme de 3ème — identités remarquables, Thalès, trigonométrie…</p>
+      <a href="B.html" class="btn btn-primary">Aller au Parcours B →</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-text" id="daily-quote"></div>
+    <div class="quote-author" id="daily-quote-author"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-logo">📐 Passerelle 3e→2nde</div>
+  </div>
+</footer>
+
+<script src="../js/data.js"></script>
+<script src="../js/app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('exercices-A');
+    EXERCICES_A.forEach((ex, i) => {
+      const wrapper = document.createElement('div');
+      wrapper.id = `ex-wrap-${ex.id}`;
+      container.appendChild(wrapper);
+      renderExercice(ex, wrapper, 'orange');
+    });
+
+    // Mettre à jour la barre de progression locale
+    const pr = getParcoursProgress('A');
+    const bar = document.getElementById('prog-bar-A-local');
+    const doneTxt = document.getElementById('prog-done-A');
+    if (bar) bar.style.width = pr.pct + '%';
+    if (doneTxt) doneTxt.textContent = pr.done;
+  });
+</script>
+</body>
+</html>

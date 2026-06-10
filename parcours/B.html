@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parcours B — Les essentiels · Passerelle 3e→2nde</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../index.html" class="site-logo"><span class="logo-icon">📐</span>Passerelle 3e→2nde</a>
+    <nav><ul class="nav-links">
+      <li><a href="../diagnostic.html">Diagnostic</a></li>
+      <li><a href="A.html">Remise en forme</a></li>
+      <li><a href="B.html" class="active">Les essentiels</a></li>
+      <li><a href="C.html">Cap Seconde</a></li>
+      <li><a href="../automatismes/index.html">Automatismes BAC</a></li>
+    </ul></nav>
+    <div class="header-right">
+      <div class="streak-pill" id="streak-pill" style="display:none">📅 0 jour</div>
+      <div class="user-chip" id="user-chip">Se connecter</div>
+    </div>
+  </div>
+</header>
+
+<!-- En-tête parcours -->
+<section style="background:linear-gradient(135deg,#F5F3FF,#EDE9FE);border-bottom:3px solid var(--purple);padding:2.5rem 0;">
+  <div class="container" style="max-width:800px;">
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+      <span style="font-size:2.5rem;">⭐</span>
+      <div>
+        <div style="font-size:.78rem;font-weight:900;color:var(--purple);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem;">Parcours B</div>
+        <h1 style="font-size:1.8rem;">Les essentiels</h1>
+      </div>
+      <div style="margin-left:auto;">
+        <div class="prog-bar-wrap" style="width:200px;">
+          <div class="prog-bar pb" id="prog-bar-B-local" style="width:0%"></div>
+        </div>
+        <div style="font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:.3rem;text-align:right;">
+          <span id="prog-done-B">0</span> / 12 exercices
+        </div>
+      </div>
+    </div>
+    <p style="color:var(--text-muted);max-width:600px;">
+      Le programme de 3ème est au cœur de ce parcours. Ces notions seront mobilisées tout au long du lycée — autant les maîtriser vraiment. Plusieurs exercices sont de <strong>type brevet</strong> (inspirés des annales APMEP 2024-2025).
+    </p>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;">
+      <span class="topic-chip" style="background:#EDE9FE;color:#5B21B6;">Identités remarquables</span>
+      <span class="topic-chip" style="background:#EDE9FE;color:#5B21B6;">Factorisation</span>
+      <span class="topic-chip" style="background:#EDE9FE;color:#5B21B6;">Systèmes d'équations</span>
+      <span class="topic-chip" style="background:#EDE9FE;color:#5B21B6;">Fonctions affines</span>
+      <span class="topic-chip" style="background:#EDE9FE;color:#5B21B6;">Thalès</span>
+      <span class="topic-chip" style="background:#EDE9FE;color:#5B21B6;">Trigonométrie</span>
+      <span class="topic-chip" style="background:#EDE9FE;color:#5B21B6;">Statistiques</span>
+      <span class="topic-chip" style="background:#EDE9FE;color:#5B21B6;">Probabilités</span>
+    </div>
+    <div style="margin-top:1rem;background:white;border-radius:10px;padding:.75rem 1rem;display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:700;border:1.5px solid #DDD6FE;">
+      <span>📝</span> Certains exercices sont inspirés des sujets du Brevet — annales APMEP 2024-2025
+    </div>
+  </div>
+</section>
+
+<!-- Exercices -->
+<section class="section">
+  <div class="container" style="max-width:800px;">
+
+    <div style="background:var(--purple-light);border:1.5px solid #DDD6FE;border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:2rem;display:flex;gap:.75rem;align-items:flex-start;">
+      <span style="font-size:1.5rem;">📝</span>
+      <div>
+        <strong>Style brevet :</strong> Les exercices marqués <span style="background:#EDE9FE;color:#5B21B6;padding:.1rem .4rem;border-radius:5px;font-size:.8rem;font-weight:800;">📝 style brevet</span> sont inspirés des annales officielles du Brevet des collèges (APMEP 2024-2025). Ils t'entraînent au format et au niveau de l'examen que tu viens de passer ou que tu passeras.
+      </div>
+    </div>
+
+    <div id="exercices-B"></div>
+
+    <!-- Navigation vers C -->
+    <div style="text-align:center;margin-top:3rem;padding:2rem;background:var(--blue-light);border-radius:var(--radius-lg);border:2px dashed var(--blue);">
+      <div style="font-size:2rem;margin-bottom:.75rem;">🎯</div>
+      <h3 style="color:var(--blue);margin-bottom:.5rem;">Tu maîtrises les essentiels ?</h3>
+      <p style="color:var(--text-muted);font-size:.9rem;margin-bottom:1.25rem;">Le Parcours C t'emmène vers les notions de Seconde — vecteurs, intervalles, fonctions générales…</p>
+      <a href="C.html" class="btn btn-primary">Aller au Parcours C →</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-text" id="daily-quote"></div>
+    <div class="quote-author" id="daily-quote-author"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-logo">📐 Passerelle 3e→2nde</div>
+    <p style="margin-top:.5rem;font-size:.82rem;">Exercices inspirés des annales du Brevet · <a href="https://www.apmep.fr/Annales-du-Brevet-des-colleges" target="_blank" rel="noopener">APMEP</a></p>
+  </div>
+</footer>
+
+<script src="../js/data.js"></script>
+<script src="../js/app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('exercices-B');
+    EXERCICES_B.forEach(ex => {
+      const wrapper = document.createElement('div');
+      wrapper.id = `ex-wrap-${ex.id}`;
+      container.appendChild(wrapper);
+      renderExercice(ex, wrapper, 'purple');
+    });
+
+    const pr = getParcoursProgress('B');
+    const bar = document.getElementById('prog-bar-B-local');
+    const doneTxt = document.getElementById('prog-done-B');
+    if (bar) bar.style.width = pr.pct + '%';
+    if (doneTxt) doneTxt.textContent = pr.done;
+  });
+</script>
+</body>
+</html>

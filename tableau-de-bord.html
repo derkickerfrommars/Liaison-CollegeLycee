@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord — Passerelle 3e→2nde</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo"><span class="logo-icon">📐</span>Passerelle 3e→2nde</a>
+    <nav><ul class="nav-links">
+      <li><a href="diagnostic.html">Diagnostic</a></li>
+      <li><a href="parcours/A.html">Remise en forme</a></li>
+      <li><a href="parcours/B.html">Les essentiels</a></li>
+      <li><a href="parcours/C.html">Cap Seconde</a></li>
+      <li><a href="automatismes/index.html">Automatismes BAC</a></li>
+      <li><a href="tableau-de-bord.html" class="active">Mon tableau de bord</a></li>
+    </ul></nav>
+    <div class="header-right">
+      <div class="streak-pill" id="streak-pill" style="display:none">📅 0 jour</div>
+      <div class="user-chip" id="user-chip">Se connecter</div>
+    </div>
+  </div>
+</header>
+
+<!-- Profil -->
+<section style="background:linear-gradient(135deg,#312E81,#4F46E5,#7C3AED);color:white;padding:3rem 0;">
+  <div class="container" style="max-width:900px;">
+    <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+      <div id="profile-avatar" style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.2);border:3px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:900;">?</div>
+      <div>
+        <div id="profile-name" style="font-size:1.6rem;font-weight:900;margin-bottom:.25rem;">Chargement…</div>
+        <div id="profile-level" style="opacity:.75;font-size:.95rem;"></div>
+      </div>
+      <div style="margin-left:auto;display:flex;gap:1.5rem;flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <span id="dash-xp" style="font-size:2rem;font-weight:900;color:#FCD34D;display:block;">0</span>
+          <span style="font-size:.78rem;opacity:.65;">XP total</span>
+        </div>
+        <div style="text-align:center;">
+          <span id="dash-streak" style="font-size:2rem;font-weight:900;color:#FB923C;display:block;">0</span>
+          <span style="font-size:.78rem;opacity:.65;">jours de suite</span>
+        </div>
+        <div style="text-align:center;">
+          <span id="dash-done" style="font-size:2rem;font-weight:900;display:block;">0</span>
+          <span style="font-size:.78rem;opacity:.65;">exercices faits</span>
+        </div>
+        <div style="text-align:center;">
+          <span id="dash-badges" style="font-size:2rem;font-weight:900;color:#FCD34D;display:block;">0</span>
+          <span style="font-size:.78rem;opacity:.65;">badges</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Progression par parcours -->
+<section class="section">
+  <div class="container" style="max-width:900px;">
+    <h2 class="section-title">Ma progression</h2>
+    <p class="section-subtitle">Visualise ton avancement sur chaque parcours.</p>
+    <div class="card-grid">
+      <!-- A -->
+      <div class="card pa" style="border-top:4px solid var(--orange);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
+          <div><span style="font-size:1.5rem;">🏃</span> <strong>Parcours A</strong></div>
+          <span id="pct-A" style="font-weight:900;color:var(--orange);font-size:1.1rem;">0 %</span>
+        </div>
+        <div class="prog-bar-wrap"><div class="prog-bar pa" id="db-bar-A" style="width:0%"></div></div>
+        <div class="prog-meta"><span id="db-txt-A-done">0</span><span>/ 10 exercices</span></div>
+        <a href="parcours/A.html" class="btn btn-ghost btn-sm btn-full" style="margin-top:1rem;">Continuer →</a>
+      </div>
+      <!-- B -->
+      <div class="card pb" style="border-top:4px solid var(--purple);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
+          <div><span style="font-size:1.5rem;">⭐</span> <strong>Parcours B</strong></div>
+          <span id="pct-B" style="font-weight:900;color:var(--purple);font-size:1.1rem;">0 %</span>
+        </div>
+        <div class="prog-bar-wrap"><div class="prog-bar pb" id="db-bar-B" style="width:0%"></div></div>
+        <div class="prog-meta"><span id="db-txt-B-done">0</span><span>/ 12 exercices</span></div>
+        <a href="parcours/B.html" class="btn btn-ghost btn-sm btn-full" style="margin-top:1rem;">Continuer →</a>
+      </div>
+      <!-- C -->
+      <div class="card pc" style="border-top:4px solid var(--blue);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
+          <div><span style="font-size:1.5rem;">🎯</span> <strong>Parcours C</strong></div>
+          <span id="pct-C" style="font-weight:900;color:var(--blue);font-size:1.1rem;">0 %</span>
+        </div>
+        <div class="prog-bar-wrap"><div class="prog-bar pc" id="db-bar-C" style="width:0%"></div></div>
+        <div class="prog-meta"><span id="db-txt-C-done">0</span><span>/ 10 exercices</span></div>
+        <a href="parcours/C.html" class="btn btn-ghost btn-sm btn-full" style="margin-top:1rem;">Continuer →</a>
+      </div>
+      <!-- Automatismes -->
+      <div class="card pauto" style="border-top:4px solid var(--gold);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
+          <div><span style="font-size:1.5rem;">⚡</span> <strong>Automatismes BAC</strong></div>
+          <span id="pct-AUTO" style="font-weight:900;color:var(--gold);font-size:1.1rem;">0 %</span>
+        </div>
+        <div class="prog-bar-wrap"><div class="prog-bar pauto" id="db-bar-AUTO" style="width:0%"></div></div>
+        <div class="prog-meta"><span id="db-txt-AUTO-done">0</span><span>/ 20 questions</span></div>
+        <a href="automatismes/index.html" class="btn btn-ghost btn-sm btn-full" style="margin-top:1rem;">S'entraîner →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Badges -->
+<section class="section section-alt">
+  <div class="container" style="max-width:900px;">
+    <h2 class="section-title">Mes badges</h2>
+    <p class="section-subtitle">Chaque badge récompense un effort réel — régularité, persévérance, maîtrise.</p>
+    <div class="badges-grid" id="badges-grid">
+      <!-- Générés par JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Historique / Activité -->
+<section class="section">
+  <div class="container" style="max-width:900px;">
+    <h2 class="section-title">Mon activité</h2>
+    <p class="section-subtitle">Les exercices complétés, dans l'ordre.</p>
+    <div id="activity-list">
+      <p style="text-align:center;color:var(--text-muted);">Aucun exercice complété pour l'instant — c'est le moment de commencer ! 🚀</p>
+    </div>
+  </div>
+</section>
+
+<!-- Citation -->
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-text" id="daily-quote"></div>
+    <div class="quote-author" id="daily-quote-author"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-logo">📐 Passerelle 3e→2nde</div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Profil
+  const pseudo = state.user?.pseudo || 'Invité·e';
+  const initiale = pseudo.charAt(0).toUpperCase();
+  document.getElementById('profile-avatar').textContent = initiale;
+  document.getElementById('profile-name').textContent = pseudo;
+
+  // Niveaux
+  const xp = getXP();
+  const levels = [
+    { min: 0, label: '📚 Débutant·e' },
+    { min: 50, label: '🌱 En progression' },
+    { min: 150, label: '💪 Motivé·e' },
+    { min: 300, label: '⭐ Étoile montante' },
+    { min: 500, label: '🔥 Expert·e' },
+    { min: 800, label: '🏆 Champion(ne) !' },
+  ];
+  const level = [...levels].reverse().find(l => xp >= l.min) || levels[0];
+  document.getElementById('profile-level').textContent = `${level.label} · ${xp} XP`;
+
+  // Stats
+  document.getElementById('dash-xp').textContent = xp;
+  document.getElementById('dash-streak').textContent = state.streak.count;
+  document.getElementById('dash-done').textContent = getTotalDone();
+  document.getElementById('dash-badges').textContent = state.badges.length;
+
+  // Barres de progression
+  ['A', 'B', 'C', 'AUTO'].forEach(p => {
+    const pr = getParcoursProgress(p);
+    const bar = document.getElementById(`db-bar-${p}`);
+    const pct = document.getElementById(`pct-${p}`);
+    const done = document.getElementById(`db-txt-${p}-done`);
+    if (bar) bar.style.width = pr.pct + '%';
+    if (pct) pct.textContent = pr.pct + ' %';
+    if (done) done.textContent = pr.done;
+  });
+
+  // Badges
+  const grid = document.getElementById('badges-grid');
+  if (grid) {
+    BADGES.forEach(badge => {
+      const earned = state.badges.includes(badge.id);
+      const card = document.createElement('div');
+      card.className = `badge-card ${earned ? 'earned' : 'locked'}`;
+      card.innerHTML = `
+        <span class="badge-icon">${badge.icon}</span>
+        <div class="badge-name">${badge.nom}</div>
+        <div class="badge-desc">${badge.desc}</div>`;
+      card.title = earned ? `Débloqué !` : `Condition : ${badge.desc}`;
+      grid.appendChild(card);
+    });
+  }
+
+  // Activité
+  const actEl = document.getElementById('activity-list');
+  const allEx = [...EXERCICES_A, ...EXERCICES_B, ...EXERCICES_C, ...AUTOMATISMES];
+  const doneExs = allEx.filter(ex => state.progress[ex.id]?.done);
+
+  if (doneExs.length > 0 && actEl) {
+    actEl.innerHTML = '';
+    doneExs.forEach(ex => {
+      const date = state.progress[ex.id]?.date || '';
+      const item = document.createElement('div');
+      item.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:white;border-radius:10px;border:1.5px solid var(--border);margin-bottom:.5rem;';
+      item.innerHTML = `
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span class="done-badge">✓</span>
+          <div>
+            <div style="font-weight:700;font-size:.9rem;">${ex.titre || ex.question?.slice(0, 50) || ex.id}</div>
+            <div style="font-size:.78rem;color:var(--text-muted);">${ex.id} · ${date}</div>
+          </div>
+        </div>
+        <span style="font-weight:900;color:var(--secondary);font-size:.9rem;">+${ex.xp} XP</span>`;
+      actEl.appendChild(item);
+    });
+  }
+});
+</script>
+</body>
+</html>

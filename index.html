@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passerelle 3e → 2nde — Cahier de vacances mathématiques</title>
+  <meta name="description" content="Cahier de vacances mathématiques pour la transition 3ème–Seconde. Révisez, progressez et arrivez serein·e en lycée.">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">
+      <span class="logo-icon">📐</span>
+      Passerelle 3e→2nde
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="diagnostic.html">Diagnostic</a></li>
+        <li><a href="parcours/A.html">Remise en forme</a></li>
+        <li><a href="parcours/B.html">Les essentiels</a></li>
+        <li><a href="parcours/C.html">Cap Seconde</a></li>
+        <li><a href="automatismes/index.html">Automatismes BAC</a></li>
+        <li><a href="tableau-de-bord.html">Mon tableau de bord</a></li>
+      </ul>
+    </nav>
+    <div class="header-right">
+      <div class="streak-pill" id="streak-pill" style="display:none">📅 0 jour</div>
+      <div class="user-chip" id="user-chip" tabindex="0" role="button" aria-label="Mon compte">
+        Se connecter
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">☀️ Été 2026 · Mathématiques</div>
+    <h1>Ton été mathématiques<br>commence ici !</h1>
+    <p>Un cahier de vacances pour arriver <strong>serein·e et confiant·e</strong> en Seconde — à ton rythme, avec bienveillance et persévérance.</p>
+    <div class="hero-streak" id="hero-streak-display" style="display:none">
+      🔥 Série en cours : <span id="streak-count">0</span> jour(s) consécutif(s) !
+    </div>
+    <div class="hero-actions">
+      <button class="btn-hero" onclick="window.location.href='diagnostic.html'">
+        🧭 Faire le diagnostic
+      </button>
+      <button class="btn-hero-ghost" onclick="window.location.href='tableau-de-bord.html'">
+        📊 Mon tableau de bord
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHILOSOPHIE ===== -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Un cahier pas comme les autres 💙</h2>
+    <p class="section-subtitle">Voici ce qui nous guide dans chaque exercice, chaque page, chaque mot.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="step-icon">🖊️</span>
+        <h3>Prends ta feuille !</h3>
+        <p>L'écran sert d'interface, mais la vraie magie se passe sur papier. Quand on te le rappelle, attrape un stylo — c'est là que la mémoire se construit.</p>
+      </div>
+      <div class="step">
+        <span class="step-icon">💪</span>
+        <h3>Tu en es capable</h3>
+        <p>Les mathématiques ne sont pas réservées à quelques-un·e·s. Avec de la régularité et de la confiance en soi, tout le monde peut progresser. On y croit pour toi.</p>
+      </div>
+      <div class="step">
+        <span class="step-icon">🌱</span>
+        <h3>L'erreur fait partie du jeu</h3>
+        <p>Bloquer sur un exercice, c'est normal. C'est même le signe que tu travailles vraiment. Utilise les indices, regarde la solution — et recommence.</p>
+      </div>
+      <div class="step">
+        <span class="step-icon">🔥</span>
+        <h3>La régularité paie</h3>
+        <p>30 minutes par jour, c'est mieux qu'une seule grande session par semaine. Ton streak (ta série de jours consécutifs) récompense exactement ça.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMMENT ÇA MARCHE ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Comment ça marche ?</h2>
+    <p class="section-subtitle">4 étapes pour un été mathématique réussi</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <span class="step-icon">🧭</span>
+        <h3>Le diagnostic</h3>
+        <p>15 questions pour identifier où tu en es. Le site te recommande ensuite par où commencer. Honnêteté avec soi-même = progrès réels.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <span class="step-icon">🏃</span>
+        <h3>Choisis ton parcours</h3>
+        <p>A = Remise en forme (fondamentaux), B = Les essentiels (algèbre, géométrie, stats), C = Cap Seconde (préparation au lycée). Tu peux naviguer librement entre les trois.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <span class="step-icon">⚡</span>
+        <h3>Automatismes BAC</h3>
+        <p>En 1ère, 6 points sur 20 sont dédiés aux automatismes flash (sans calculatrice). C'est maintenant que tu les sécurises.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <span class="step-icon">🏆</span>
+        <h3>Récompenses & badges</h3>
+        <p>XP, badges, streaks — chaque jour travaillé est célébré. Ton tableau de bord montre ta progression en temps réel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARCOURS ===== -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Les 3 parcours + automatismes</h2>
+    <p class="section-subtitle">Trois chemins complémentaires — tu peux naviguer librement entre eux.</p>
+    <div class="parcours-grid">
+
+      <!-- Parcours A -->
+      <a href="parcours/A.html" class="parcours-card pa">
+        <div class="parcours-card-top">
+          <span class="parcours-icon">🏃</span>
+          <span class="parcours-tag">Parcours A</span>
+        </div>
+        <h3>Remise en forme</h3>
+        <p class="desc">Retrouver des repères solides sur les notions fondamentales — fractions, proportionnalité, équations simples, géométrie de base.</p>
+        <div class="topics">
+          <span class="topic-chip">Fractions</span>
+          <span class="topic-chip">Proportionnalité</span>
+          <span class="topic-chip">Équations</span>
+          <span class="topic-chip">Géométrie</span>
+          <span class="topic-chip">Puissances</span>
+        </div>
+        <div class="prog-bar-wrap"><div class="prog-bar" id="prog-bar-A" style="width:0%"></div></div>
+        <div class="prog-meta"><span>Progression</span><span id="prog-txt-A">0/10</span></div>
+      </a>
+
+      <!-- Parcours B -->
+      <a href="parcours/B.html" class="parcours-card pb">
+        <div class="parcours-card-top">
+          <span class="parcours-icon">⭐</span>
+          <span class="parcours-tag">Parcours B</span>
+        </div>
+        <h3>Les essentiels</h3>
+        <p class="desc">Programme de 3ème consolidé. Identités remarquables, théorèmes de Thalès et Pythagore, fonctions affines, statistiques.</p>
+        <div class="topics">
+          <span class="topic-chip">Algèbre</span>
+          <span class="topic-chip">Fonctions</span>
+          <span class="topic-chip">Thalès</span>
+          <span class="topic-chip">Trigonométrie</span>
+          <span class="topic-chip">Statistiques</span>
+        </div>
+        <div class="prog-bar-wrap"><div class="prog-bar" id="prog-bar-B" style="width:0%"></div></div>
+        <div class="prog-meta"><span>Progression</span><span id="prog-txt-B">0/12</span></div>
+      </a>
+
+      <!-- Parcours C -->
+      <a href="parcours/C.html" class="parcours-card pc">
+        <div class="parcours-card-top">
+          <span class="parcours-icon">🎯</span>
+          <span class="parcours-tag">Parcours C</span>
+        </div>
+        <h3>Cap Seconde</h3>
+        <p class="desc">Préparation au programme de 2nde. Ensembles, intervalles, vecteurs, fonctions générales, statistiques avancées.</p>
+        <div class="topics">
+          <span class="topic-chip">Intervalles</span>
+          <span class="topic-chip">Vecteurs</span>
+          <span class="topic-chip">Fonctions</span>
+          <span class="topic-chip">Probabilités</span>
+          <span class="topic-chip">Géométrie analytique</span>
+        </div>
+        <div class="prog-bar-wrap"><div class="prog-bar" id="prog-bar-C" style="width:0%"></div></div>
+        <div class="prog-meta"><span>Progression</span><span id="prog-txt-C">0/10</span></div>
+      </a>
+
+      <!-- Automatismes -->
+      <a href="automatismes/index.html" class="parcours-card pauto">
+        <div class="parcours-card-top">
+          <span class="parcours-icon">⚡</span>
+          <span class="parcours-tag">BAC 1ère</span>
+        </div>
+        <h3>Automatismes Flash</h3>
+        <p class="desc">20 questions QCM sans calculatrice. Le format exact de la partie automatismes de l'épreuve anticipée de Première (6 pts).</p>
+        <div class="topics">
+          <span class="topic-chip">QCM</span>
+          <span class="topic-chip">Sans calculatrice</span>
+          <span class="topic-chip">6 pts au BAC</span>
+          <span class="topic-chip">Flash</span>
+        </div>
+        <div class="prog-bar-wrap"><div class="prog-bar" id="prog-bar-AUTO" style="width:0%"></div></div>
+        <div class="prog-meta"><span>Questions réussies</span><span id="prog-txt-AUTO">0/20</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== AUTOMATISMES BAC HIGHLIGHT ===== -->
+<section class="bac-section">
+  <div class="container">
+    <div class="bac-eyebrow">🎯 Épreuve anticipée de Première — Mathématiques</div>
+    <h2>Les automatismes, c'est maintenant qu'on les prépare</h2>
+    <p>En Première, 6 points sur 20 sont attribués aux automatismes : des questions flash, sans calculatrice, où chaque seconde compte. C'est une compétence qui se développe par la <strong>répétition régulière</strong> — exactement ce que propose ce cahier, dès maintenant.</p>
+    <div class="bac-stats">
+      <div class="bac-stat">
+        <span class="bac-stat-val">6 pts</span>
+        <span class="bac-stat-lbl">sur 20 au BAC</span>
+      </div>
+      <div class="bac-stat">
+        <span class="bac-stat-val">0 calculatrice</span>
+        <span class="bac-stat-lbl">toute l'épreuve</span>
+      </div>
+      <div class="bac-stat">
+        <span class="bac-stat-val">2h</span>
+        <span class="bac-stat-lbl">durée de l'épreuve</span>
+      </div>
+      <div class="bac-stat">
+        <span class="bac-stat-val">Coeff. 2</span>
+        <span class="bac-stat-lbl">en Première</span>
+      </div>
+    </div>
+    <a href="automatismes/index.html" class="btn-bac">⚡ S'entraîner aux automatismes</a>
+  </div>
+</section>
+
+<!-- ===== PROGRESSION GLOBALE ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Ta progression</h2>
+    <p class="section-subtitle">Connecte-toi pour sauvegarder et retrouver ta progression sur tous tes appareils.</p>
+    <div class="progress-overview" id="progress-overview">
+      <div class="stat-card">
+        <span class="stat-val" id="stat-xp">0</span>
+        <span class="stat-lbl">⭐ XP total</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-val" id="stat-done">0</span>
+        <span class="stat-lbl">✅ Exercices faits</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-val" id="stat-streak">0</span>
+        <span class="stat-lbl">🔥 Jours de suite</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-val" id="stat-badges">0</span>
+        <span class="stat-lbl">🏆 Badges débloqués</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:1.5rem;">
+      <a href="tableau-de-bord.html" class="btn btn-primary btn-lg">Voir mon tableau de bord complet →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CITATION DU JOUR ===== -->
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-text" id="daily-quote">"La persévérance est la reine des vertus."</div>
+    <div class="quote-author" id="daily-quote-author">— Proverbe</div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-logo">📐 Passerelle 3e→2nde</div>
+    <p style="margin:.5rem 0;">Cahier de vacances mathématiques · Été 2026</p>
+    <p>Contenus basés sur les programmes officiels de l'Éducation nationale et les annales du brevet <a href="https://www.apmep.fr/Annales-du-Brevet-des-colleges" target="_blank" rel="noopener">APMEP</a>.</p>
+    <p style="margin-top:.75rem;font-size:.82rem;opacity:.6;">Développé avec bienveillance pour tous les élèves.</p>
+  </div>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Mise à jour des stats
+    const statXP = document.getElementById('stat-xp');
+    const statDone = document.getElementById('stat-done');
+    const statStreak = document.getElementById('stat-streak');
+    const statBadges = document.getElementById('stat-badges');
+
+    function updateStats() {
+      if (statXP) statXP.textContent = getXP();
+      if (statDone) statDone.textContent = getTotalDone();
+      if (statStreak) statStreak.textContent = state.streak.count;
+      if (statBadges) statBadges.textContent = state.badges.length;
+    }
+
+    // Afficher le streak dans le héros
+    const heroStreak = document.getElementById('hero-streak-display');
+    const streakCount = document.getElementById('streak-count');
+    if (state.streak.count > 0) {
+      heroStreak?.removeAttribute('style');
+      if (streakCount) streakCount.textContent = state.streak.count;
+    }
+
+    updateStats();
+  });
+</script>
+
+</body>
+</html>
