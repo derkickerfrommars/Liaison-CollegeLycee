@@ -40,7 +40,7 @@ const BADGES = [
   { id: "auto-20", nom: "Flash !", icon: "🌩️", desc: "20 automatismes réussis", condition: "auto_20" },
   { id: "perseverant", nom: "Persévérant·e", icon: "🎖️", desc: "30 exercices complétés", condition: "total_30" },
   { id: "expert", nom: "Expert(e)", icon: "🎓", desc: "Tous les parcours terminés + 20 automatismes", condition: "all_done" },
-  { id: "brevet-style", nom: "Style brevet", icon: "📝", desc: "5 exercices de type brevet réussis", condition: "brevet_5" },
+  { id: "brevet-style", nom: "Prêt(e) pour le BAC", icon: "🎓", desc: "5 exercices de type BAC réussis", condition: "brevet_5" },
 ];
 
 /* ===== MESSAGES D'ENCOURAGEMENT ===== */

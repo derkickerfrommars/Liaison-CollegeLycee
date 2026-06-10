@@ -497,7 +497,7 @@ function renderExercice(ex, container, color = 'blue') {
       <div class="ex-header">
         <div class="ex-meta">
           <span class="ex-id">${ex.id}</span>
-          <span class="ex-type">${ex.type}${ex.brevet ? ' · 📝 style brevet' : ''}</span>
+          <span class="ex-type">${ex.type}${ex.brevet ? ' · 🎓 type BAC' : ''}</span>
         </div>
         <div class="ex-right">
           ${isDone ? '<span class="done-badge">✓ Fait</span>' : ''}
@@ -506,7 +506,7 @@ function renderExercice(ex, container, color = 'blue') {
         </div>
       </div>
       <div class="ex-body">
-        ${ex.papier ? '<div class="paper-tip">🖊️ Prends une feuille et un stylo pour cet exercice !</div>' : ''}
+        ${ex.papier ? '<div class="paper-tip">🖊️ Prends une feuille et un stylo — la vie est tellement plus simple avec du papier !</div>' : ''}
         <h3 style="margin-bottom:.75rem;">${ex.titre}</h3>
         <div class="enonce katex-content">${ex.enonce.replace(/\n/g, '<br>')}</div>
         <div class="ex-actions">
