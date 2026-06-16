@@ -508,21 +508,22 @@ function renderExercice(ex, container, color = 'blue') {
       <div class="ex-body">
         ${ex.papier ? '<div class="paper-tip">🖊️ Prends une feuille et un stylo — la vie est tellement plus simple avec du papier !</div>' : ''}
         <h3 style="margin-bottom:.75rem;">${ex.titre}</h3>
-        <div class="enonce katex-content">${ex.enonce.replace(/\n/g, '<br>')}</div>
-        <div class="ex-actions">
+        <div class="enonce katex-content">${mdToHtml(ex.enonce)}</div>
+        <div class="ex-actions" id="ex-actions-${ex.id}">
           ${!isDone ? `
-            <button class="btn btn-success" onclick="validerExercice('${ex.id}', this)">✓ J'ai réussi !</button>
+            <button class="btn btn-success" id="validate-btn-${ex.id}" onclick="showValidationQCM('${ex.id}')">🎯 Vérifier ma réponse</button>
             <button class="btn btn-warning" onclick="showAide('${ex.id}')">💡 Indice</button>
             <button class="btn btn-ghost" onclick="showSolution('${ex.id}')">🔍 Solution</button>
           ` : '<span style="color:var(--green);font-weight:800;">✓ Exercice complété !</span>'}
         </div>
+        <div id="qcm-valid-${ex.id}"></div>
         <div id="aide-${ex.id}" class="aide-box">
           <div class="box-title">💡 Indice</div>
-          <div class="katex-content">${(ex.aide || '').replace(/\n/g, '<br>')}</div>
+          <div class="katex-content">${mdToHtml(ex.aide)}</div>
         </div>
         <div id="sol-${ex.id}" class="solution-box">
           <div class="box-title">✅ Solution complète</div>
-          <div class="katex-content">${(ex.solution || '').replace(/\n/g, '<br>')}</div>
+          <div class="katex-content">${mdToHtml(ex.solution)}</div>
         </div>
         <div id="bravo-${ex.id}" class="bravo-msg"></div>
       </div>
@@ -550,33 +551,104 @@ function showSolution(id) {
   document.getElementById(`sol-${id}`)?.classList.add('show');
 }
 
-function validerExercice(id, btn) {
+function showValidationQCM(id) {
+  const ex = [...EXERCICES_A, ...EXERCICES_B, ...EXERCICES_C].find(e => e.id === id);
+  if (!ex) return;
+
+  const validateBtn = document.getElementById(`validate-btn-${id}`);
+  if (validateBtn) validateBtn.disabled = true;
+
+  const qcmDiv = document.getElementById(`qcm-valid-${id}`);
+  if (!qcmDiv) return;
+
+  const v = ex.validation;
+  const optsHTML = v.options.map((opt, i) =>
+    `<button class="qcm-opt" onclick="answerValidation('${id}', ${i}, this)">${opt}</button>`
+  ).join('');
+
+  qcmDiv.style.display = 'block';
+  qcmDiv.innerHTML = `
+    <div style="padding:1.25rem;background:linear-gradient(135deg,#F0FDF4,#DCFCE7);border-radius:12px;border:1.5px solid #86EFAC;margin-top:1rem;">
+      <div style="font-weight:800;color:#166534;margin-bottom:.75rem;">🎯 Avant de valider — réponds à cette question :</div>
+      <div class="katex-content" style="margin-bottom:1rem;">${mdToHtml(v.question)}</div>
+      <div class="qcm-options">${optsHTML}</div>
+      <div id="valid-feedback-${id}" style="display:none;margin-top:.75rem;padding:.75rem;border-radius:8px;"></div>
+    </div>`;
+
+  qcmDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  if (typeof renderMathInElement !== 'undefined') {
+    setTimeout(() => renderMathInElement(qcmDiv, {
+      delimiters: [{ left: '$$', right: '$$', display: true }, { left: '$', right: '$', display: false }],
+      throwOnError: false,
+    }), 50);
+  }
+}
+
+function answerValidation(exId, idx, btn) {
+  const ex = [...EXERCICES_A, ...EXERCICES_B, ...EXERCICES_C].find(e => e.id === exId);
+  if (!ex?.validation) return;
+
+  const opts = btn.closest('.qcm-options').querySelectorAll('.qcm-opt');
+  opts.forEach(o => o.disabled = true);
+
+  const correct = idx === ex.validation.reponse;
+  opts[ex.validation.reponse].classList.add('correct');
+  if (!correct) btn.classList.add('wrong');
+
+  const feedback = document.getElementById(`valid-feedback-${exId}`);
+  if (!feedback) return;
+  feedback.style.display = 'block';
+
+  if (correct) {
+    feedback.style.cssText = 'background:var(--green-light);border:1.5px solid #86EFAC;border-radius:8px;padding:.75rem;';
+    feedback.innerHTML = `<div style="color:var(--green);font-weight:800;">🎉 Exact ! Tu as trouvé la bonne réponse — <strong>+${ex.xp} XP</strong> gagnés !</div>`;
+    validerExercice(exId);
+  } else {
+    feedback.style.cssText = 'background:#FFF1F2;border:1.5px solid #FCA5A5;border-radius:8px;padding:.75rem;';
+    const msgs = [
+      "Pas tout à fait — relis bien l'énoncé et regarde la solution, tu vas y arriver ! 💪",
+      "Presque ! Une petite erreur de calcul peut-être ? Jette un œil à la solution 👀",
+      "C'est pas la bonne — mais l'erreur est formatrice ! Consulte la solution et réessaie 🌱",
+    ];
+    feedback.innerHTML = `
+      <div style="color:#B91C1C;font-weight:700;margin-bottom:.5rem;">❌ ${msgs[Math.floor(Math.random() * msgs.length)]}</div>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;">
+        <button class="btn btn-warning btn-sm" onclick="showSolution('${exId}')">🔍 Voir la solution</button>
+        <button class="btn btn-ghost btn-sm" onclick="retryValidation('${exId}')">🔄 Réessayer</button>
+      </div>`;
+  }
+}
+
+function retryValidation(exId) {
+  const qcmDiv = document.getElementById(`qcm-valid-${exId}`);
+  if (qcmDiv) qcmDiv.style.display = 'none';
+  const btn = document.getElementById(`validate-btn-${exId}`);
+  if (btn) btn.disabled = false;
+}
+
+function validerExercice(id) {
   const ex = [...EXERCICES_A, ...EXERCICES_B, ...EXERCICES_C, ...AUTOMATISMES].find(e => e.id === id);
   if (!ex) return;
 
   const newBadges = markExerciceDone(id, ex.xp);
 
-  // UI feedback
   const bravoEl = document.getElementById(`bravo-${id}`);
   if (bravoEl) {
     bravoEl.textContent = BRAVO_MESSAGES[Math.floor(Math.random() * BRAVO_MESSAGES.length)];
     bravoEl.classList.add('show');
   }
 
-  // Recharger la carte pour afficher "Fait"
-  const card = btn?.closest('.ex-card');
+  const card = document.querySelector(`#ex-wrap-${id} .ex-card`);
   if (card) card.classList.add('done');
-  btn?.closest('.ex-actions')?.remove();
-  if (card?.querySelector('.ex-right')) {
+  const actions = document.querySelector(`#ex-wrap-${id} .ex-actions`);
+  if (actions) actions.innerHTML = '<span style="color:var(--green);font-weight:800;">✓ Exercice complété !</span>';
+  if (card?.querySelector('.ex-right') && !card.querySelector('.done-badge')) {
     card.querySelector('.ex-right').insertAdjacentHTML('afterbegin', '<span class="done-badge">✓ Fait</span>');
   }
 
-  // Toast XP
   showToast('success', '⭐', `+${ex.xp} XP !`, `Exercice ${id} complété !`);
-
-  // Badges
   newBadges.forEach(b => setTimeout(() => celebrateBadge(b), 600));
-
   updateHeaderUI();
   updateParcoursCards();
 }
@@ -712,6 +784,12 @@ function renderQCMResult(container) {
 /* ===================================================================
    UTILITAIRES
    =================================================================== */
+function mdToHtml(text) {
+  return (text || '')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br>');
+}
+
 function today() {
   return new Date().toISOString().slice(0, 10);
 }

@@ -886,6 +886,51 @@ p { line-height: 1.7; }
   .hero-actions { flex-direction: column; align-items: center; }
 }
 
+/* ===== TABLEAUX DE VALEURS ===== */
+.val-table {
+  border-collapse: collapse;
+  margin: .75rem 0;
+  font-size: .92rem;
+  overflow-x: auto;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+}
+.val-table td, .val-table th {
+  border: 1.5px solid #94A3B8;
+  padding: .4rem .75rem;
+  text-align: center;
+  min-width: 2.5rem;
+}
+.val-table thead td, .val-table th {
+  background: #F1F5F9;
+  font-weight: 700;
+  color: #334155;
+}
+.val-table tbody td:first-child {
+  background: #F1F5F9;
+  font-weight: 700;
+  color: #334155;
+}
+.ref-table {
+  border-collapse: collapse;
+  margin: .75rem 0;
+  font-size: .88rem;
+  width: 100%;
+}
+.ref-table td, .ref-table th {
+  border: 1.5px solid #94A3B8;
+  padding: .5rem .75rem;
+  vertical-align: top;
+}
+.ref-table thead th {
+  background: #EFF6FF;
+  font-weight: 700;
+  color: #1D4ED8;
+  text-align: left;
+}
+.ref-table tbody tr:nth-child(even) td { background: #F8FAFC; }
+
 /* ===== PRINT ===== */
 @media print {
   .site-header, .ex-actions, .aide-box, .site-footer,
