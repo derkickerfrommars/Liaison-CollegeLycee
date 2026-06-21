@@ -160,10 +160,16 @@ async function registerUser(pseudo, pin) {
   return { success: true };
 }
 
+function rootUrl(path) {
+  const sub = window.location.pathname.includes('/parcours/') ||
+              window.location.pathname.includes('/automatismes/');
+  return (sub ? '../' : '') + path;
+}
+
 function logoutUser() {
   state.user = null;
   localStorage.removeItem(LS.USER);
-  window.location.href = '/index.html';
+  window.location.href = rootUrl('index.html');
 }
 
 /* ===================================================================
@@ -171,6 +177,7 @@ function logoutUser() {
    =================================================================== */
 function markExerciceDone(id, xp, tries = 1) {
   if (state.progress[id]?.done) return; // déjà fait
+  if (!state.user) return;
 
   state.progress[id] = { done: true, date: today(), tries };
   state.user.xp = (state.user.xp || 0) + xp;
@@ -347,7 +354,7 @@ function updateHeaderUI() {
       <div class="user-avatar">${initial}</div>
       <span>${state.user.pseudo}</span>
       <span class="xp-pill">${getXP()} XP</span>`;
-    userChip.onclick = () => { window.location.href = '/tableau-de-bord.html'; };
+    userChip.onclick = () => { window.location.href = rootUrl('tableau-de-bord.html'); };
   }
   if (xpPill) xpPill.textContent = `${getXP()} XP`;
   if (streakPill) {
@@ -544,7 +551,9 @@ function renderExercice(ex, container, color = 'blue') {
 function showAide(id) {
   document.getElementById(`aide-${id}`)?.classList.add('show');
   localStorage.setItem('pm_hint_used', 'true');
-  checkBadges();
+  const newBadges = checkBadges();
+  saveState();
+  newBadges.forEach(b => celebrateBadge(b));
 }
 
 function showSolution(id) {
@@ -834,7 +843,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelector('.nav-links');
   if (navToggle && navLinks) {
     navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
     document.addEventListener('click', (e) => {
       if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {

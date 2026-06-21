@@ -457,7 +457,7 @@ const EXERCICES_B = [
     xp: 30,
     papier: true,
     brevet: true,
-    enonce: `<strong>Exercice de synthèse</strong> — il mobilise Pythagore, la trigonométrie et les aires.\n\nUn mât vertical $MH = 6$ m est fixé au sol en $H$. Un câble relie le sommet $M$ au sol en $P$, avec $HP = 4$ m. Le triangle $MHP$ est rectangle en $H$.\n\n<strong>a)</strong> Fais un schéma légendé avec les mesures.\n\n<strong>b)</strong> <em>(Pythagore)</em> Calcule $MP$ (valeur exacte $\\sqrt{?}$, puis arrondie au cm).\n\n<strong>c)</strong> <em>(Trigonométrie)</em> Calcule l'angle $\\widehat{MPH}$ que fait le câble avec le sol.\nIndicaion : par rapport à $\\widehat{MPH}$, quel est le côté opposé ? Le côté adjacent ? Utilise la bonne formule (SOH-CAH-<strong>TOA</strong>).\n\n<strong>d)</strong> <em>(Aire)</em> Calcule l'aire du triangle en m².`,
+    enonce: `<strong>Exercice de synthèse</strong> — il mobilise Pythagore, la trigonométrie et les aires.\n\nUn mât vertical $MH = 6$ m est fixé au sol en $H$. Un câble relie le sommet $M$ au sol en $P$, avec $HP = 4$ m. Le triangle $MHP$ est rectangle en $H$.\n\n<strong>a)</strong> Fais un schéma légendé avec les mesures.\n\n<strong>b)</strong> <em>(Pythagore)</em> Calcule $MP$ (valeur exacte $\\sqrt{?}$, puis arrondie au cm).\n\n<strong>c)</strong> <em>(Trigonométrie)</em> Calcule l'angle $\\widehat{MPH}$ que fait le câble avec le sol.\nIndication : par rapport à $\\widehat{MPH}$, quel est le côté opposé ? Le côté adjacent ? Utilise la bonne formule (SOH-CAH-<strong>TOA</strong>).\n\n<strong>d)</strong> <em>(Aire)</em> Calcule l'aire du triangle en m².`,
     aide: `<strong>b)</strong> $MP^2 = MH^2 + HP^2 = 6^2 + 4^2$\n\n<strong>c)</strong> $\\tan(\\widehat{MPH}) = \\frac{\\text{opposé}}{\\text{adjacent}} = \\frac{MH}{HP} = \\frac{6}{4}$\nDonc $\\widehat{MPH} = \\arctan(1{,}5)$ (touche TAN⁻¹ sur la calculatrice).\n\n<strong>d)</strong> Aire du triangle rectangle = $\\frac{\\text{base} \\times \\text{hauteur}}{2} = \\frac{HP \\times MH}{2}$`,
     solution: `<strong>b)</strong> $MP^2 = MH^2 + HP^2 = 36 + 16 = 52$\n$MP = \\sqrt{52} = 2\\sqrt{13} \\approx \\mathbf{7{,}21}$ <strong>m</strong>\n\n<strong>c)</strong> $\\tan(\\widehat{MPH}) = \\frac{6}{4} = 1{,}5$\n$\\widehat{MPH} = \\arctan(1{,}5) \\approx \\mathbf{56°}$\n\n<strong>d)</strong> Aire $= \\frac{4 \\times 6}{2} = \\mathbf{12}$ <strong>m²</strong>`,
     validation: {
@@ -516,9 +516,9 @@ const EXERCICES_C = [
     xp: 15,
     papier: true,
     brevet: false,
-    enonce: `Tu connais déjà le repère depuis le collège. En Seconde, on l'utilise tout le temps pour décrire des points, des droites, des courbes... C'est vraiment la base de toute la géométrie analytique. Rappelons ensemble les notions clés.\n\n<svg viewBox="0 0 260 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;height:auto;display:block;margin:.75rem auto;"><g stroke="#E2E8F0" stroke-width="0.5"><line x1="55" y1="10" x2="55" y2="220"/><line x1="80" y1="10" x2="80" y2="220"/><line x1="105" y1="10" x2="105" y2="220"/><line x1="155" y1="10" x2="155" y2="220"/><line x1="180" y1="10" x2="180" y2="220"/><line x1="205" y1="10" x2="205" y2="220"/><line x1="20" y1="45" x2="250" y2="45"/><line x1="20" y1="70" x2="250" y2="70"/><line x1="20" y1="95" x2="250" y2="95"/><line x1="20" y1="145" x2="250" y2="145"/><line x1="20" y1="170" x2="250" y2="170"/><line x1="20" y1="195" x2="250" y2="195"/></g><line x1="20" y1="120" x2="250" y2="120" stroke="#64748B" stroke-width="1.5" marker-end="url(#arr)"/><line x1="130" y1="220" x2="130" y2="10" stroke="#64748B" stroke-width="1.5" marker-end="url(#arr)"/><defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748B"/></marker></defs><text x="252" y="124" font-size="11" fill="#64748B">x</text><text x="133" y="12" font-size="11" fill="#64748B">y</text><text x="134" y="132" font-size="10" fill="#64748B">O</text><line x1="155" y1="117" x2="155" y2="123" stroke="#94A3B8" stroke-width="1"/><line x1="180" y1="117" x2="180" y2="123" stroke="#94A3B8" stroke-width="1"/><line x1="105" y1="117" x2="105" y2="123" stroke="#94A3B8" stroke-width="1"/><line x1="127" y1="95" x2="133" y2="95" stroke="#94A3B8" stroke-width="1"/><line x1="127" y1="70" x2="133" y2="70" stroke="#94A3B8" stroke-width="1"/><line x1="127" y1="145" x2="133" y2="145" stroke="#94A3B8" stroke-width="1"/><text x="152" y="136" font-size="9" fill="#64748B">1</text><text x="177" y="136" font-size="9" fill="#64748B">2</text><text x="102" y="136" font-size="9" fill="#64748B">-1</text><text x="135" y="99" font-size="9" fill="#64748B">1</text><text x="135" y="74" font-size="9" fill="#64748B">2</text><text x="135" y="149" font-size="9" fill="#64748B">-1</text><circle cx="180" cy="95" r="5" fill="#6366F1"/><text x="185" y="90" font-size="11" fill="#6366F1" font-weight="bold">A(2 ; 1)</text><circle cx="105" cy="70" r="5" fill="#EF4444"/><text x="110" y="65" font-size="11" fill="#EF4444" font-weight="bold">B(-1 ; 2)</text></svg>\n\n<strong>Lire les coordonnées d'un point :</strong> pour le point $A(2\\,;\\,1)$, on lit d'abord l'abscisse $x = 2$ (position horizontale), puis l'ordonnée $y = 1$ (position verticale).\n\n<strong>Milieu d'un segment :</strong> le milieu $M$ de $[AB]$ a pour coordonnées :\n$$M = \\left(\\frac{x_A + x_B}{2}\\,;\\,\\frac{y_A + y_B}{2}\\right)$$\nC'est simplement la moyenne des abscisses et la moyenne des ordonnées.\n\n<strong>Distance entre deux points</strong> — tu connais déjà Pythagore ! Si on trace un triangle rectangle avec $AB$ comme hypoténuse :\n$$AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$$\n\n<strong>Exemple :</strong> $A(1\\,;\\,2)$ et $B(4\\,;\\,6)$.\nMilieu : $M = \\left(\\frac{1+4}{2}\\,;\\,\\frac{2+6}{2}\\right) = \\left(\\frac{5}{2}\\,;\\,4\\right)$\nDistance : $AB = \\sqrt{(4-1)^2 + (6-2)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$\n\nDans un repère, on donne les points $A(3\\,;\\,1)$, $B(-1\\,;\\,4)$ et $C(5\\,;\\,-2)$.\n\n<strong>a)</strong> Place les trois points dans un repère orthogonal sur ta feuille.\n<strong>b)</strong> Calcule les coordonnées du milieu $M$ du segment $[AB]$.\n<strong>c)</strong> Calcule la longueur $AB$ (donne le résultat exact, puis une valeur approchée à $0{,}1$ près).\n<strong>d)</strong> Montre que le triangle $ABC$ est isocèle en $C$, c'est-à-dire que $CA = CB$.`,
+    enonce: `Tu connais déjà le repère depuis le collège. En Seconde, on l'utilise tout le temps pour décrire des points, des droites, des courbes... C'est vraiment la base de toute la géométrie analytique. Rappelons ensemble les notions clés.\n\n<svg viewBox="0 0 260 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;height:auto;display:block;margin:.75rem auto;"><g stroke="#E2E8F0" stroke-width="0.5"><line x1="55" y1="10" x2="55" y2="220"/><line x1="80" y1="10" x2="80" y2="220"/><line x1="105" y1="10" x2="105" y2="220"/><line x1="155" y1="10" x2="155" y2="220"/><line x1="180" y1="10" x2="180" y2="220"/><line x1="205" y1="10" x2="205" y2="220"/><line x1="20" y1="45" x2="250" y2="45"/><line x1="20" y1="70" x2="250" y2="70"/><line x1="20" y1="95" x2="250" y2="95"/><line x1="20" y1="145" x2="250" y2="145"/><line x1="20" y1="170" x2="250" y2="170"/><line x1="20" y1="195" x2="250" y2="195"/></g><line x1="20" y1="120" x2="250" y2="120" stroke="#64748B" stroke-width="1.5" marker-end="url(#arr)"/><line x1="130" y1="220" x2="130" y2="10" stroke="#64748B" stroke-width="1.5" marker-end="url(#arr)"/><defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748B"/></marker></defs><text x="252" y="124" font-size="11" fill="#64748B">x</text><text x="133" y="12" font-size="11" fill="#64748B">y</text><text x="134" y="132" font-size="10" fill="#64748B">O</text><line x1="155" y1="117" x2="155" y2="123" stroke="#94A3B8" stroke-width="1"/><line x1="180" y1="117" x2="180" y2="123" stroke="#94A3B8" stroke-width="1"/><line x1="105" y1="117" x2="105" y2="123" stroke="#94A3B8" stroke-width="1"/><line x1="127" y1="95" x2="133" y2="95" stroke="#94A3B8" stroke-width="1"/><line x1="127" y1="70" x2="133" y2="70" stroke="#94A3B8" stroke-width="1"/><line x1="127" y1="145" x2="133" y2="145" stroke="#94A3B8" stroke-width="1"/><text x="152" y="136" font-size="9" fill="#64748B">1</text><text x="177" y="136" font-size="9" fill="#64748B">2</text><text x="102" y="136" font-size="9" fill="#64748B">-1</text><text x="135" y="99" font-size="9" fill="#64748B">1</text><text x="135" y="74" font-size="9" fill="#64748B">2</text><text x="135" y="149" font-size="9" fill="#64748B">-1</text><circle cx="180" cy="95" r="5" fill="#6366F1"/><text x="185" y="90" font-size="11" fill="#6366F1" font-weight="bold">A(2 ; 1)</text><circle cx="105" cy="70" r="5" fill="#EF4444"/><text x="110" y="65" font-size="11" fill="#EF4444" font-weight="bold">B(-1 ; 2)</text></svg>\n\n<strong>Lire les coordonnées d'un point :</strong> pour le point $A(2\\,;\\,1)$, on lit d'abord l'abscisse $x = 2$ (position horizontale), puis l'ordonnée $y = 1$ (position verticale).\n\n<strong>Milieu d'un segment :</strong> le milieu $M$ de $[AB]$ a pour coordonnées :\n$$M = \\left(\\frac{x_A + x_B}{2}\\,;\\,\\frac{y_A + y_B}{2}\\right)$$\nC'est simplement la moyenne des abscisses et la moyenne des ordonnées.\n\n<strong>Distance entre deux points</strong> — tu connais déjà Pythagore ! Si on trace un triangle rectangle avec $AB$ comme hypoténuse :\n$$AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$$\n\n<strong>Exemple :</strong> $A(1\\,;\\,2)$ et $B(4\\,;\\,6)$.\nMilieu : $M = \\left(\\frac{1+4}{2}\\,;\\,\\frac{2+6}{2}\\right) = \\left(\\frac{5}{2}\\,;\\,4\\right)$\nDistance : $AB = \\sqrt{(4-1)^2 + (6-2)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$\n\nDans un repère, on donne les points $A(3\\,;\\,1)$, $B(-1\\,;\\,4)$ et $C(5\\,;\\,-2)$.\n\n<strong>a)</strong> Place les trois points dans un repère orthogonal sur ta feuille.\n<strong>b)</strong> Calcule les coordonnées du milieu $M$ du segment $[AB]$.\n<strong>c)</strong> Calcule la longueur $AB$ (donne le résultat exact, puis une valeur approchée à $0{,}1$ près).\n<strong>d)</strong> Calcule $CA$ et $CB$. Le triangle $ABC$ est-il isocèle en $C$ ?`,
     aide: `<strong>b)</strong> Milieu : $M = \\left(\\frac{3 + (-1)}{2}\\,;\\,\\frac{1 + 4}{2}\\right) = ?$\n\n<strong>c)</strong> $AB = \\sqrt{(-1-3)^2 + (4-1)^2} = \\sqrt{16 + 9} = ?$\n\n<strong>d)</strong> Calcule $CA$ et $CB$ séparément avec la même formule de distance, puis compare.`,
-    solution: `<strong>b)</strong> $M = \\left(\\frac{3-1}{2}\\,;\\,\\frac{1+4}{2}\\right) = \\left(1\\,;\\,\\frac{5}{2}\\right)$\n\n<strong>c)</strong> $AB = \\sqrt{(-4)^2 + 3^2} = \\sqrt{16+9} = \\sqrt{25} = \\mathbf{5}$\n\n<strong>d)</strong> $CA = \\sqrt{(3-5)^2 + (1-(-2))^2} = \\sqrt{4+9} = \\sqrt{13}$\n$CB = \\sqrt{(-1-5)^2 + (4-(-2))^2} = \\sqrt{36+36} = 6\\sqrt{2}$\nAttention : $CA = \\sqrt{13} \\neq CB = 6\\sqrt{2}$. Le triangle n'est pas isocèle en $C$. Refais les calculs pour vérifier — l'erreur est formative !`,
+    solution: `<strong>b)</strong> $M = \\left(\\frac{3-1}{2}\\,;\\,\\frac{1+4}{2}\\right) = \\left(1\\,;\\,\\frac{5}{2}\\right)$\n\n<strong>c)</strong> $AB = \\sqrt{(-4)^2 + 3^2} = \\sqrt{16+9} = \\sqrt{25} = \\mathbf{5}$\n\n<strong>d)</strong> $CA = \\sqrt{(3-5)^2 + (1-(-2))^2} = \\sqrt{4+9} = \\sqrt{13}$\n$CB = \\sqrt{(-1-5)^2 + (4-(-2))^2} = \\sqrt{36+36} = 6\\sqrt{2}$\nComme $CA = \\sqrt{13} \\neq CB = 6\\sqrt{2}$, le triangle $ABC$ n'est <strong>pas isocèle en $C$</strong>.`,
     validation: {
       question: "Le milieu de $[AB]$ avec $A(3\\,;\\,1)$ et $B(-1\\,;\\,4)$ a pour coordonnées :",
       options: ["$(1\\,;\\,2{,}5)$", "$(2\\,;\\,5)$", "$(4\\,;\\,3)$", "$(1\\,;\\,5)$"],
@@ -608,7 +608,7 @@ const EXERCICES_C = [
     brevet: false,
     enonce: `Ce graphique a l'air compliqué au premier abord, mais une fois qu'on sait le lire, il donne une quantité d'informations en un coup d'œil. Regarde le schéma ci-dessous et lis les explications : après ça, les cinq valeurs n'auront plus de secret pour toi.\n\n<svg viewBox="0 0 360 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:440px;height:auto;display:block;margin:.75rem auto;"><line x1="20" y1="68" x2="340" y2="68" stroke="#CBD5E1" stroke-width="1"/><line x1="55" y1="48" x2="110" y2="48" stroke="#334155" stroke-width="2"/><line x1="55" y1="35" x2="55" y2="62" stroke="#334155" stroke-width="2.5"/><rect x="110" y="32" width="140" height="32" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2"/><line x1="180" y1="32" x2="180" y2="64" stroke="#1D4ED8" stroke-width="3"/><line x1="250" y1="48" x2="310" y2="48" stroke="#334155" stroke-width="2"/><line x1="310" y1="35" x2="310" y2="62" stroke="#334155" stroke-width="2.5"/><text x="55" y="88" text-anchor="middle" font-size="10" fill="#334155" font-weight="bold">minimum</text><text x="110" y="88" text-anchor="middle" font-size="10" fill="#3B82F6" font-weight="bold">Q₁</text><text x="180" y="88" text-anchor="middle" font-size="10" fill="#1D4ED8" font-weight="bold">médiane</text><text x="250" y="88" text-anchor="middle" font-size="10" fill="#3B82F6" font-weight="bold">Q₃</text><text x="310" y="88" text-anchor="middle" font-size="10" fill="#334155" font-weight="bold">maximum</text><text x="145" y="24" font-size="9" fill="#64748B" text-anchor="middle">25 % des valeurs</text><text x="250" y="24" font-size="9" fill="#64748B" text-anchor="middle">25 % des valeurs</text></svg>\n\n<strong>Les cinq valeurs à connaître :</strong>\n- <strong>Minimum</strong> et <strong>maximum</strong> : les extrêmes de la série\n- <strong>Premier quartile $Q_1$</strong> : 25 % des valeurs sont inférieures ou égales à $Q_1$\n- <strong>Médiane</strong> : 50 % des valeurs sont inférieures ou égales à la médiane\n- <strong>Troisième quartile $Q_3$</strong> : 75 % des valeurs sont inférieures ou égales à $Q_3$\n\n<strong>Comment calculer</strong> sur une série ordonnée de $n = 12$ valeurs :\n- La médiane est la moyenne des valeurs aux rangs 6 et 7\n- $Q_1$ est la médiane des 6 premières valeurs (moyenne des rangs 3 et 4)\n- $Q_3$ est la médiane des 6 dernières valeurs (moyenne des rangs 9 et 10)\n- L'<strong>écart interquartile</strong> $EI = Q_3 - Q_1$ mesure la dispersion de la moitié centrale\n\n<strong>Valeurs aberrantes :</strong> une valeur est aberrante si elle est en dehors de l'intervalle $[Q_1 - 1{,}5 \\times EI \\,;\\, Q_3 + 1{,}5 \\times EI]$\n\nLes temps (en minutes) de 12 élèves pour résoudre un problème :\n$$18 \\quad 25 \\quad 12 \\quad 30 \\quad 22 \\quad 15 \\quad 28 \\quad 35 \\quad 20 \\quad 24 \\quad 17 \\quad 40$$\n\n<strong>a)</strong> Ordonne la série. Détermine le minimum, le maximum, la médiane, $Q_1$ et $Q_3$.\n<strong>b)</strong> Calcule l'écart interquartile $EI$. Y a-t-il des valeurs aberrantes ?\n<strong>c)</strong> Trace la boîte à moustaches sur papier en t'aidant du schéma ci-dessus.`,
     aide: `Avec 12 valeurs ordonnées :\n- Médiane = moyenne des 6ème et 7ème valeurs\n- $Q_1$ = médiane des 6 premières valeurs (= moyenne des 3ème et 4ème)\n- $Q_3$ = médiane des 6 dernières valeurs (= moyenne des 9ème et 10ème)\n\nPour les valeurs aberrantes : calcule $Q_1 - 1{,}5 \\times EI$ et $Q_3 + 1{,}5 \\times EI$, puis vérifie si min ou max dépassent ces seuils.`,
-    solution: `Série ordonnée : $12, 15, 17, 18, 20, 22, 24, 25, 28, 30, 35, 40$\n\n<strong>a)</strong> min = 12, max = 40\nMédiane = $\\frac{22+24}{2} = \\mathbf{23}$\n$Q_1 = \\frac{17+18}{2} = \\mathbf{17{,}5}$ ; $Q_3 = \\frac{28+30}{2} = \\mathbf{29}$\n\n<strong>b)</strong> EI = $29 - 17{,}5 = \\mathbf{11{,}5}$\nSeuil bas : $17{,}5 - 17{,}25 = 0{,}25$ ; Seuil haut : $29 + 17{,}25 = 46{,}25$\nToutes les valeurs sont entre 0{,}25 et 46{,}25 : <strong>pas de valeur aberrante</strong>`,
+    solution: `Série ordonnée : $12, 15, 17, 18, 20, 22, 24, 25, 28, 30, 35, 40$\n\n<strong>a)</strong> min = 12, max = 40\nMédiane = $\\frac{22+24}{2} = \\mathbf{23}$\n$Q_1 = \\frac{17+18}{2} = \\mathbf{17{,}5}$ ; $Q_3 = \\frac{28+30}{2} = \\mathbf{29}$\n\n<strong>b)</strong> EI = $29 - 17{,}5 = \\mathbf{11{,}5}$\nSeuil bas : $17{,}5 - 17{,}25 = 0{,}25$ ; Seuil haut : $29 + 17{,}25 = 46{,}25$\nToutes les valeurs sont entre $0{,}25$ et $46{,}25$ : <strong>pas de valeur aberrante</strong>`,
     validation: {
       question: "L'écart interquartile $Q_3 - Q_1$ de la série vaut :",
       options: ["$11{,}5$", "$28$", "$23$", "$17{,}5$"],
@@ -878,7 +878,7 @@ const DIAGNOSTIC = [
     question: "Développe $(x+3)^2$ :",
     options: ["$x^2 + 9$", "$x^2 + 6x + 9$", "$x^2 + 3x + 9$", "$x^2 + 6x$"],
     reponse: 1,
-    poids: { A: 0, B: 3, C: 1 },
+    poids: { A: 0, B: 2, C: 1 },
   },
   {
     id: "D-06",
@@ -886,7 +886,7 @@ const DIAGNOSTIC = [
     question: "Factorise : $x^2 - 25$",
     options: ["$(x-5)^2$", "$(x+5)(x-5)$", "$(x-5)(x+25)$", "$x(x-25)$"],
     reponse: 1,
-    poids: { A: 0, B: 3, C: 1 },
+    poids: { A: 0, B: 2, C: 1 },
   },
   {
     id: "D-07",
@@ -894,7 +894,7 @@ const DIAGNOSTIC = [
     question: "La pente de la droite $y = -3x + 7$ est :",
     options: ["$7$", "$-7$", "$3$", "$-3$"],
     reponse: 3,
-    poids: { A: 0, B: 2, C: 2 },
+    poids: { A: 0, B: 1, C: 3 },
   },
   {
     id: "D-08",
@@ -902,7 +902,7 @@ const DIAGNOSTIC = [
     question: "Dans un triangle $ABC$ avec $D$ sur $[AB]$, $E$ sur $[AC]$, $(DE) \\parallel (BC)$, $AD=3$, $AB=9$, $BC=6$. Alors $DE$ vaut :",
     options: ["$2$", "$3$", "$4$", "$18$"],
     reponse: 0,
-    poids: { A: 0, B: 3, C: 1 },
+    poids: { A: 0, B: 2, C: 1 },
   },
   {
     id: "D-09",
@@ -910,7 +910,7 @@ const DIAGNOSTIC = [
     question: "Simplifie $\\sqrt{50}$ :",
     options: ["$5\\sqrt{2}$", "$25\\sqrt{2}$", "$10\\sqrt{5}$", "$5\\sqrt{10}$"],
     reponse: 0,
-    poids: { A: 0, B: 2, C: 1 },
+    poids: { A: 0, B: 1, C: 2 },
   },
   {
     id: "D-10",
@@ -918,7 +918,7 @@ const DIAGNOSTIC = [
     question: "Une série a pour médiane 15, $Q_1 = 10$, $Q_3 = 20$. L'écart interquartile est :",
     options: ["$5$", "$10$", "$15$", "$25$"],
     reponse: 1,
-    poids: { A: 0, B: 2, C: 2 },
+    poids: { A: 0, B: 1, C: 3 },
   },
   {
     id: "D-11",
@@ -926,7 +926,7 @@ const DIAGNOSTIC = [
     question: "Dans un triangle rectangle $ABC$ (angle droit en $B$), $AB = 4$ cm, $BC = 3$ cm, $AC = 5$ cm. Alors $\\cos(\\widehat{BAC})$ vaut :",
     options: ["$\\dfrac{3}{5}$", "$\\dfrac{4}{5}$", "$\\dfrac{3}{4}$", "$\\dfrac{5}{4}$"],
     reponse: 1,
-    poids: { A: 0, B: 3, C: 1 },
+    poids: { A: 0, B: 1, C: 3 },
   },
   {
     id: "D-12",
@@ -934,7 +934,7 @@ const DIAGNOSTIC = [
     question: "Un sac contient 4 boules rouges et 6 boules bleues. On tire une boule au hasard. La probabilité d'obtenir une boule rouge est :",
     options: ["$\\dfrac{4}{6} = \\dfrac{2}{3}$", "$\\dfrac{4}{10} = \\dfrac{2}{5}$", "$\\dfrac{6}{10} = \\dfrac{3}{5}$", "$\\dfrac{1}{4}$"],
     reponse: 1,
-    poids: { A: 0, B: 2, C: 2 },
+    poids: { A: 0, B: 1, C: 3 },
   },
   {
     id: "D-13",
@@ -942,7 +942,7 @@ const DIAGNOSTIC = [
     question: "Résous l'inéquation $3x - 1 > 5$ :",
     options: ["$x > 2$", "$x < 2$", "$x > -2$", "$x > 3$"],
     reponse: 0,
-    poids: { A: 0, B: 3, C: 1 },
+    poids: { A: 0, B: 1, C: 3 },
   },
   {
     id: "D-14",
@@ -950,7 +950,7 @@ const DIAGNOSTIC = [
     question: "Écris $0{,}00045$ en notation scientifique :",
     options: ["$45 \\times 10^{-5}$", "$4{,}5 \\times 10^{4}$", "$4{,}5 \\times 10^{-4}$", "$0{,}45 \\times 10^{-3}$"],
     reponse: 2,
-    poids: { A: 0, B: 2, C: 1 },
+    poids: { A: 0, B: 1, C: 2 },
   },
   {
     id: "D-15",
@@ -958,7 +958,7 @@ const DIAGNOSTIC = [
     question: "Pour quelle valeur de $x$ la fonction $f(x) = 2x - 6$ s'annule-t-elle ?",
     options: ["$x = -6$", "$x = -3$", "$x = 6$", "$x = 3$"],
     reponse: 3,
-    poids: { A: 0, B: 3, C: 1 },
+    poids: { A: 0, B: 1, C: 3 },
   },
 ];
 

@@ -13,7 +13,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="../index.html" class="site-logo"><span class="logo-icon">📐</span>Passerelle 3e→2nde</a>
+    <a href="index.html" class="site-logo"><span class="logo-icon">📐</span>Passerelle 3e→2nde</a>
     <nav><ul class="nav-links">
       <li><a href="diagnostic.html" class="active">Diagnostic</a></li>
       <li><a href="parcours/A.html">Remise en forme</a></li>
@@ -24,7 +24,7 @@
     <div class="header-right">
       <div class="streak-pill" id="streak-pill" style="display:none">📅 0 jour</div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-      <div class="user-chip" id="user-chip">Se connecter</div>
+      <div class="user-chip" id="user-chip" tabindex="0" role="button" aria-label="Mon compte">Se connecter</div>
     </div>
   </div>
 </header>
@@ -183,7 +183,7 @@
       recoHref = 'parcours/C.html';
       recoIcon = '🎯';
       recoMsg = 'Tu as de très bonnes bases ! Tu peux directement préparer le programme de Seconde tout en gardant un œil sur le Parcours B pour consolider.';
-    } else if (sB >= sA) {
+    } else if (sB > sA) {
       reco = 'Parcours B — Les essentiels';
       recoHref = 'parcours/B.html';
       recoIcon = '⭐';
