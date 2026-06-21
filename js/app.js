@@ -829,6 +829,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (quoteAuthorEl) quoteAuthorEl.textContent = `— ${q.author}`;
   }
 
+  // Menu hamburger mobile
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('open');
+      }
+    });
+  }
+
   // Rendre KaTeX global
   if (typeof renderMathInElement !== 'undefined') {
     renderMathInElement(document.body, {
